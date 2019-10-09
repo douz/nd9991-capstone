@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "StackName",
+        "ParameterValue": "nd9991-capstone"
+    },
+    {
+        "ParameterKey": "BootstrapArguments",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "NodeGroupName",
+        "ParameterValue": "eks-workers"
+    },
+    {
+        "ParameterKey": "NodeImageId",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "NodeInstanceType",
+        "ParameterValue": "t3.medium"
+    }
+]

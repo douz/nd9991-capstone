@@ -1,0 +1,50 @@
+Description: 'Creates the EKS cluster'
+
+Parameters:
+  StackName:
+    Type: String
+    Description: Name that will be prefixed to resource names.
+
+Resources:
+  EksServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - eks.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+        - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+
+  EKSCluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Version: '1.13'
+      RoleArn: !GetAtt EksServiceRole.Arn
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+        - Fn::ImportValue:
+            !Sub ${StackName}-SG
+        SubnetIds:
+            Fn::Split:
+                - ","
+                - Fn::ImportValue:
+                      Fn::Sub: ${StackName}-SN-IDS
+Outputs:
+  RoleArn:
+    Description: The role that Amazon EKS will use to create AWS resources for Kubernetes clusters
+    Value: !GetAtt EksServiceRole.Arn
+    Export:
+      Name: !Sub ${StackName}-EKS-RoleArn
+      
+  EksId:
+    Description: The EKS id.
+    Value: !Ref EKSCluster
+    Export: 
+        Name: !Sub ${StackName}-EKS

@@ -1,0 +1,26 @@
+[
+    {
+        "ParameterKey": "StackName",
+        "ParameterValue": "nd9991-capstone"
+    },
+    {
+        "ParameterKey": "VpcBlock",
+        "ParameterValue": "192.168.0.0/16"
+    },
+    {
+        "ParameterKey": "PublicSubnet01Block",
+        "ParameterValue": "192.168.0.0/24"
+    },
+    {
+        "ParameterKey": "PublicSubnet02Block",
+        "ParameterValue": "192.168.1.0/24"
+    },
+    {
+        "ParameterKey": "PrivateSubnet01Block",
+        "ParameterValue": "192.168.2.0/24"
+    },
+    {
+        "ParameterKey": "PrivateSubnet02Block",
+        "ParameterValue": "192.168.3.0/24"
+    }
+]

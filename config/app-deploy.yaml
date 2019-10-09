@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nd9991-capstone-app
+  labels:
+    app: nd9991-capstone-app
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nd9991-capstone-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nd9991-capstone-app
+    spec:
+      containers:
+      - image: dbarahona/nd9991-capstone-app:latest
+        imagePullPolicy: Always
+        name: nd9991-capstone-app
+        ports:
+        - containerPort: 80
+          protocol: TCP
