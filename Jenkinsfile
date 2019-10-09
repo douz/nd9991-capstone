@@ -27,5 +27,10 @@ pipeline{
                 }
             }
         }
+        stage ('Deploy to EKS') {
+            steps {
+                sh "kubectl set image deployment/nd9991-capstone-app nd9991-capstone-app=dbarahona/nd9991-capstone-app:${env.GIT_COMMIT[0..7]} --record"
+            }
+        }
     }
 }
