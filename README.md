@@ -6,11 +6,11 @@ Udacity nd9991 capstone project. it contains a conteinerized HTML template with 
 ## Environment
 ### Files
 
-`/aws` Contains all Cloudformation scripts to setup the EKS network, cluster and workers.
-`/config` Contains all Kubernetes configuration files.
-`/public` Contains the HTML template.
-`Dockerfile` Used to build the capstone app image.
-`Jenkinsfile` Jenkins pipeline file.
+1. `/aws` Contains all Cloudformation scripts to setup the EKS network, cluster and workers.
+2. `/config` Contains all Kubernetes configuration files.
+3. `/public` Contains the HTML template.
+4. `Dockerfile` Used to build the capstone app image.
+5. `Jenkinsfile` Jenkins pipeline file.
 
 ### Setup EKS cluster and worker nodes.
 To setup the EKS cluster you need to first create the network, then the EKS cluster and lastly add the worker nodes. You can do so by running the following commands:
