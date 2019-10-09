@@ -5,7 +5,7 @@ pipeline{
         stage("Linting"){
             steps{
                 echo "Linting HTML Code"
-                sh "tidy -q -e *.html"
+                sh "tidy -q -e public/*.html"
                 echo "Linting Dockerfile"
                 sh "hadolint Dockerfile"
             }
