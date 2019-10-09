@@ -1,7 +1,15 @@
 pipeline{
     agent any
-    
+
     stages{
+        stage("Linting"){
+            steps{
+                echo "Linting HTML Code"
+                sh "tidy -q -e *.html"
+                echo "Linting Dockerfile"
+                sh "hadolint Dockerfile"
+            }
+        }
         stage("Build Docker Image"){
             steps{
                 script {
